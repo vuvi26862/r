@@ -1,118 +1,25 @@
-/* --- Scroll Snap Layout --- */
-html,
-body {
-    height: 100%;
-}
-
-body {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-}
-
-.hero,
-.section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-snap-align: start;
-    padding: 0;
-}
-
-/* Tăng padding, font-size cho cảm giác hero rõ ràng hơn */
-.hero-content,
-.section-content,
-.contact-content {
-    min-height: 70vh;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.hero-text h2,
-.section-text h3 {
-    font-size: 2.5rem;
-    margin-bottom: 18px;
-}
-
-.hero-text p,
-.section-text p {
-    font-size: 1.25rem;
-}
-
-/* Đảm bảo các section không bị dính sát nhau */
-.section {
-    background: #fff;
-    border-top: 1px solid #f3f4f6;
-    border-bottom: 1px solid #f3f4f6;
-}
-
-/* Footer không scroll snap */
-.footer {
-    scroll-snap-align: none;
-}
-
-/* Responsive nâng cao */
-@media (max-width: 900px) {
-
-    .hero-content,
-    .section-content,
-    .contact-content {
-        flex-direction: column;
-        min-height: 60vh;
-        padding: 24px 0;
-    }
-
-    .hero-text h2,
-    .section-text h3 {
-        font-size: 1.5rem;
-    }
-
-    .hero-text p,
-    .section-text p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .hero,
-    .section {
-        min-height: 100vh;
-        padding: 0;
-    }
-
-    .hero-content,
-    .section-content,
-    .contact-content {
-        min-height: 60vh;
-        padding: 12px 0;
-    }
-
-    .hero-text h2,
-    .section-text h3 {
-        font-size: 1.1rem;
-    }
-
-    .hero-text p,
-    .section-text p {
-        font-size: 0.95rem;
-    }
-}
-
-/* Giữ lại các style cũ phía dưới */
-/* Reset & base styles */
+/* --- General Styles --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f8fafc;
-    color: #222;
+    background-color: #FFFFFF;
+    color: #333;
     line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 img {
@@ -120,49 +27,27 @@ img {
     display: block;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Header full page, background image, overlay */
+/* --- Header --- */
 .header {
     position: relative;
-    z-index: 1;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    color: #fff;
     background: url('img/van-mieu.webp') center center/cover no-repeat;
 }
 
 .header::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 2;
-}
-
-.header-content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-}
-
-.header-bg {
-    position: absolute;
-    inset: 0;
-    background: url('img/btec-building.jpg') center center/cover no-repeat;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
-    filter: brightness(0.6) blur(0px);
 }
 
 .header-content {
@@ -171,270 +56,187 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
 }
 
 .logo {
-    height: 80px;
-    margin-bottom: 18px;
+    width: 150px;
+    margin-bottom: 20px;
 }
 
-.slogan {
-    font-size: 2.2rem;
-    color: #fff;
+.main-headline {
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 32px;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.sub-headline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 30px;
 }
 
 .explore-btn {
     display: inline-block;
-    padding: 16px 38px;
-    font-size: 1.2rem;
+    padding: 15px 35px;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(90deg, #fbbf24 0%, #f87171 100%);
+    background: #0056b3;
     border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 24px rgba(251, 191, 36, 0.18);
-    cursor: pointer;
+    border-radius: 5px;
     text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .explore-btn:hover {
-    background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);
-    transform: translateY(-2px) scale(1.04);
+    background: #004494;
+    transform: translateY(-2px);
 }
 
-@media (max-width: 900px) {
-    .logo {
-        height: 56px;
-    }
-
-    .slogan {
-        font-size: 1.2rem;
-    }
-
-    .explore-btn {
-        font-size: 1rem;
-        padding: 12px 24px;
-    }
+/* --- General Section Styles --- */
+.section {
+    padding: 80px 0;
 }
 
-@media (max-width: 600px) {
-    .header {
-        min-height: 100vh;
-    }
-
-    .logo {
-        height: 40px;
-    }
-
-    .slogan {
-        font-size: 1rem;
-    }
-
-    .explore-btn {
-        font-size: 0.95rem;
-        padding: 10px 16px;
-    }
+.section-gray {
+    background-color: #f8f9fa;
 }
 
-.logo-row {
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.logo-fpt,
-.logo-pearson {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
-    background: none;
-}
-
-@media (max-width: 600px) {
-
-    .logo-fpt,
-    .logo-pearson {
-        height: 28px;
-    }
-}
-
-.logo-btec-fixed {
-    position: absolute;
-    top: 32px;
-    right: 0;
-    height: 70px;
-    width: auto;
-    z-index: 10;
-}
-
-@media (max-width: 600px) {
-    .logo-btec-fixed {
-        top: 12px;
-        right: 0;
-        height: 40px;
-    }
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(90deg, #fef9c3 0%, #fca5a5 100%);
-}
-
-.hero-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-}
-
-.hero-text {
-    flex: 1 1 320px;
-}
-
-.hero-img {
-    flex: 1 1 320px;
-    max-width: 350px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(251, 191, 36, 0.15);
-}
-
-/* Section chung */
 .section-content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
+    align-items: center;
+    gap: 50px;
 }
 
 .section-content.reverse {
     flex-direction: row-reverse;
 }
 
-.section-img {
-    flex: 1 1 280px;
-    max-width: 320px;
-    border-radius: 12px;
-    box-shadow: 0 2px 16px rgba(16, 185, 129, 0.08);
-}
-
 .section-text {
-    flex: 2 1 320px;
+    flex: 1;
 }
 
-/* Section: BTEC highlight */
-.btec .highlight {
-    color: #dc2626;
-    background: #fef2f2;
-    padding: 2px 8px;
-    border-radius: 6px;
+.section-text h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #0056b3;
 }
 
-.btec-info {
-    margin-top: 12px;
-    padding-left: 18px;
-    color: #ea580c;
-    font-size: 1rem;
+.section-img {
+    flex: 1;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.btec-info li {
-    margin-bottom: 6px;
-}
-
-/* Section: Contact */
-.contact-content {
+/* --- Dual Info Section --- */
+.dual-info-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    align-items: flex-start;
-    justify-content: space-between;
+    gap: 40px;
 }
 
-.contact-form {
-    flex: 1 1 320px;
+.info-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+}
+
+.info-box h4 {
+    font-size: 1.5rem;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+/* --- Registration Form Section --- */
+.registration-section {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.registration-container {
+    max-width: 700px;
+    text-align: center;
+}
+
+.registration-container h3 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.form-description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.register-form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    background: #fff7ed;
-    padding: 24px 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(251, 191, 36, 0.08);
+    gap: 15px;
 }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 10px 12px;
-    border: 1px solid #fbbf24;
-    border-radius: 6px;
+.register-form input,
+.register-form select {
+    padding: 15px;
     font-size: 1rem;
-    background: #fff;
-    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.contact-form button {
-    background: linear-gradient(90deg, #fbbf24 0%, #f87171 100%);
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
+.register-form select {
+    color: #555;
+}
+
+.submit-btn {
+    padding: 15px;
     font-size: 1.1rem;
+    font-weight: 700;
+    color: #0056b3;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.contact-form button:hover {
-    background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);
+.submit-btn:hover {
+    background-color: #e9ecef;
 }
 
-.contact-info {
-    flex: 1 1 220px;
-    background: #f1f5f9;
-    padding: 20px 18px;
-    border-radius: 10px;
-    font-size: 1rem;
-    color: #0f172a;
-}
-
-.contact-info p {
-    margin-bottom: 8px;
-}
-
-/* Footer */
+/* --- Footer --- */
 .footer {
-    background: #fbbf24;
+    background: #333;
     color: #fff;
     text-align: center;
-    padding: 18px 0;
-    font-size: 1rem;
-    letter-spacing: 1px;
+    padding: 20px 0;
 }
 
-/* FIX: THÊM ĐOẠN MÃ NÀY VÀO CUỐI FILE CSS */
-.tradition {
-    position: relative; /* Bắt buộc phải có để ::before hoạt động đúng */
-    z-index: 1; /* Tạo stacking context */
-}
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .main-headline {
+        font-size: 2rem;
+    }
 
-/* Tạo lớp nền mờ */
-.tradition::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('img/d005f7643a6b64ed687d96bb0834ccb2-removebg-preview.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; /* Hoặc có thể dùng '40%' để nhỏ hơn */
-    opacity: 0.1; /* Độ mờ của ảnh nền */
-    z-index: -1; /* Đặt lớp nền này nằm DƯỚI nội dung */
+    .sub-headline {
+        font-size: 1.2rem;
+    }
+
+    .section-content {
+        flex-direction: column;
+    }
+
+    .section-content.reverse {
+        flex-direction: column;
+    }
+
+    .section-img {
+        margin-top: 30px;
+    }
+
+    .dual-info-container {
+        flex-direction: column;
+    }
 }
