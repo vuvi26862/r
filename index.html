@@ -4,106 +4,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cao đẳng Anh Quốc BTEC FPT - Xét tuyển 2024</title>
+  <title>Landing Page - Cao đẳng quốc tế BTEC</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <!-- Header -->
   <header class="header">
+    <!-- Thêm vào trong .header-content -->
+    <button id="toggle-dark" aria-label="Chuyển dark mode" class="darkmode-btn">🌙</button>
+    <button id="toggle-leaves" aria-label="Bật/tắt lá rơi" class="leaves-btn">🍂</button>
     <div class="container header-content">
-      <img src="img/Logo-Btec.png" alt="Logo BTEC" class="logo">
-      <h1 class="main-headline">CAO ĐẲNG ANH QUỐC BTEC FPT</h1>
-      <p class="sub-headline">Chương trình Cao đẳng chuẩn Quốc tế - Xét tuyển học bạ THPT</p>
-      <a href="#register-form" class="explore-btn">Đăng ký tư vấn ngay</a>
+      <img src="img/Logo-Btec.png" alt="Logo BTEC" class="logo-btec-fixed">
+      <h1 class="slogan"><span id="typing-slogan"></span></h1>
+      <a href="#hero" class="explore-btn">Khám phá ngay</a>
     </div>
   </header>
 
-  <!-- Section: Chương trình đào tạo -->
-  <section class="section">
-    <div class="container section-content">
-      <div class="section-text">
-        <h3>Chương trình đào tạo BTEC HND</h3>
-        <p>BTEC HND là chương trình đào tạo của Anh Quốc, tương đương cấp độ cao đẳng trong hệ thống giáo dục Việt Nam.
-          Với triết lý đào tạo hiện đại, chương trình liên tục được cập nhật những xu hướng, kiến thức mới nhất nhằm đáp
-          ứng nhu cầu nhân sự chất lượng cao của các doanh nghiệp.</p>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <div class="container hero-content scroll-animate">
+        <div class="hero-text">
+          <h2>Chương trình đào tạo BTEC HND</h2>
+          <p>BTEC HND là chương trình đào tạo của Anh Quốc, tương đương cấp độ cao đẳng trong hệ thống giáo dục Việt
+            Nam. Với triết lý đào tạo hiện đại, chương trình liên tục được cập nhật để đáp ứng nhu cầu chất lượng nhân
+            sự của các doanh nghiệp.</p>
+        </div>
+        <img src="img/brand-01.png" alt="Mùa hè BTEC" class="hero-img">
       </div>
-      <img src="img/brand-01.png" alt="Chương trình đào tạo" class="section-img">
+    </div>
+  </section>
+
+  <!-- Section: Hoạt động liên kết -->
+  <section class="section summer">
+    <div class="container section-content">
+      <div class="container section-content scroll-animate">
+        <img src="img/brand-02.png" alt="Mùa hè" class="section-img">
+        <div class="section-text">
+          <h3>Hoạt động liên kết đào tạo</h3>
+          <p>BTEC liên kết với Trường Cao đẳng FPT Polytechnic và Pearson Education South Asia để cấp bằng nghề Anh Quốc
+            cho các ngành: Thiết kế đồ hoạ, Quản trị kinh doanh, và Lập trình máy tính.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Section: Mục tiêu -->
-  <section class="section section-gray">
+  <section class="section student">
     <div class="container section-content reverse">
-      <div class="section-text">
-        <h3>Mục tiêu</h3>
-        <p>Triển khai chương trình nghề nghiệp bậc cao đẳng chuẩn Anh Quốc, là cầu nối chi phí thấp đến các trường đại
-          học hàng đầu thế giới và Việt Nam. Chúng tôi đào tạo nguồn nhân lực chất lượng cao các khối ngành Lập trình
-          máy tính, Quản trị kinh doanh, Thiết kế đồ họa cho giai đoạn hội nhập toàn cầu.</p>
+      <div class="container section-content scroll-animate">
+        <div class="section-text">
+          <h3>Mục tiêu</h3>
+          <p>Triển khai chương trình nghề nghiệp chuẩn Anh Quốc, là cầu nối chi phí thấp đến các đại học hàng đầu thế
+            giới. Đào tạo nguồn nhân lực chất lượng cao cho giai đoạn hội nhập toàn cầu.</p>
+        </div>
+        <img src="img/brand-03.png" alt="Sĩ tử" class="section-img">
       </div>
-      <img src="img/brand-02.png" alt="Mục tiêu" class="section-img">
     </div>
   </section>
 
   <!-- Section: Tầm nhìn và sứ mệnh -->
-  <section class="section">
+  <section class="section tradition-bg">
     <div class="container section-content">
-      <div class="section-text">
-        <h3>Tầm nhìn và sứ mệnh</h3>
-        <p>BTEC FPT tối đa hóa kỹ năng ứng dụng kiến thức, đưa công nghệ và những thành tựu khoa học cập nhật nhất vào
-          giảng dạy, đặc biệt là Trí tuệ nhân tạo (AI). Chúng tôi mang sứ mệnh là cầu nối cho sinh viên Việt Nam tiếp
-          cận với chương trình đào tạo và nền giáo dục quốc tế đẳng cấp.</p>
-      </div>
-      <img src="img/brand-03.png" alt="Tầm nhìn và sứ mệnh" class="section-img">
-    </div>
-  </section>
-
-  <!-- Section: About Edexcel & BTEC Certificate -->
-  <section class="section section-gray">
-    <div class="container dual-info-container">
-      <div class="info-box">
-        <h4>Edexcel: Cơ quan cấp văn bằng lớn nhất Anh Quốc</h4>
-        <p>Edexcel là cơ quan cấp văn bằng lớn nhất Anh Quốc, cung cấp văn bằng học thuật và nghề nghiệp trên toàn thế
-          giới, được thành lập năm 1996 trên cơ sở hợp nhất của BTEC và Hội đồng Khảo thí Đại học London (ULEAC).</p>
-      </div>
-      <div class="info-box">
-        <h4>Bằng BTEC: Văn bằng quốc tế chất lượng cao</h4>
-        <p>Bằng BTEC là văn bằng quốc tế có giá trị tương đương với bằng GCSE, A Level và bằng đại học. Bằng BTEC HND
-          Level 5 có giá trị tương đương với chương trình năm thứ hai trong chương trình đại học ba năm tại Anh Quốc.
-        </p>
+      <div class="container section-content scroll-animate">
+        <img src="img/brand-05.png" alt="Cổ truyền" class="section-img">
+        <div class="section-text">
+          <h3>Tầm nhìn và sứ mệnh</h3>
+          <p>BTEC FPT tối đa hóa kỹ năng ứng dụng kiến thức, đưa công nghệ và thành tựu khoa học, đặc biệt là AI, vào
+            giảng dạy. Chúng tôi là cầu nối cho sinh viên Việt Nam tiếp cận với nền giáo dục quốc tế tiến bộ.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Section: Registration Form -->
-  <section id="register-form" class="section registration-section">
-    <div class="container registration-container">
-      <h3>Đăng ký xét tuyển trực tuyến</h3>
-      <p class="form-description">Điền đầy đủ thông tin bên dưới, cán bộ tuyển sinh sẽ liên hệ để tư vấn chi tiết cho
-        bạn.</p>
-      <form class="register-form">
-        <input type="text" placeholder="Họ và tên của bạn" required>
-        <input type="tel" placeholder="Số điện thoại" required>
-        <input type="email" placeholder="Địa chỉ email" required>
-        <select required>
-          <option value="" disabled selected>-- Chọn ngành học bạn quan tâm --</option>
-          <option value="ltmt">Lập trình máy tính</option>
-          <option value="qtkd">Quản trị kinh doanh</option>
-          <option value="tkdh">Thiết kế đồ hoạ</option>
-        </select>
-        <button type="submit" class="submit-btn">Gửi đăng ký</button>
-      </form>
+  <!-- Section: Edexcel & BTEC -->
+  <section class="section btec">
+    <div class="container section-content reverse">
+      <div class="container section-content scroll-animate">
+        <div class="section-text">
+          <h3><span class="highlight">Edexcel và Bằng BTEC</span></h3>
+          <p>Edexcel là cơ quan cấp văn bằng lớn nhất Anh Quốc. Bằng BTEC là văn bằng quốc tế chất lượng cao, với BTEC
+            HND Level 5 tương đương năm thứ hai đại học tại Anh, mở ra cơ hội học lên cao hơn tại các trường đại học uy
+            tín.</p>
+          <ul class="btec-info">
+            <li>Phương pháp giáo dục chuẩn quốc tế</li>
+            <li>Chú trọng ngoại ngữ và kỹ năng nghề nghiệp</li>
+            <li>Ứng dụng AI và công nghệ vào giảng dạy</li>
+          </ul>
+        </div>
+        <img src="img/information-school.png" alt="Thông tin trường BTEC" class="section-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Liên hệ -->
+  <section class="section contact">
+    <div class="container contact-content">
+      <div class="container section-content scroll-animate">
+        <h3>Liên hệ với chúng tôi</h3>
+        <form class="contact-form">
+          <input type="text" placeholder="Họ và tên" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Nội dung liên hệ" required></textarea>
+          <!-- Thay đổi nút gửi liên hệ trong form -->
+          <button type="submit">
+            <span class="btn-text">Gửi liên hệ</span>
+            <span class="btn-loading" style="display:none;">
+              <span class="runner"></span>
+            </span>
+          </button>
+        </form>
+        <div class="contact-info">
+          <p><strong>Địa chỉ:</strong> Cao đẳng quốc tế BTEC, FPT Education</p>
+          <p><strong>Email:</strong> info@btec.edu.vn</p>
+          <p><strong>Điện thoại:</strong> 0123 456 789</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>© 2024 Cao đẳng Anh Quốc BTEC FPT. All rights reserved.</p>
-    </div>
+    <img src="img/information-school.png" alt="Thông tin liên hệ" class="footer-info-img">
   </footer>
 
+  <!-- Easter Egg -->
+  <div id="mascot-easter-egg" class="mascot-easter-egg-hidden">
+    <div class="mascot-box">
+      <img src="img/Logo-Btec.png" alt="BTEC-FPT" class="mascot-img">
+      <div class="mascot-speech">
+        “Bạn đã khám phá ra bí mật rồi!<br>
+        BTEC luôn dành điều đặc biệt cho người dũng cảm.”
+      </div>
+      <button id="toggle-music" class="music-btn" aria-label="Bật/tắt nhạc">🎵</button>
+      <button id="close-mascot" class="close-mascot" aria-label="Đóng">&times;</button>
+    </div>
+  </div>
+  <audio id="egg-music" src="/music/the-moment-to-victory-256946.mp3" loop></audio>
+
   <script src="script.js"></script>
+
 </body>
 
 </html>
