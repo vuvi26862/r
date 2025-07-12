@@ -229,3 +229,33 @@ window.addEventListener("scroll", () => {
     console.log("Phần 4: sắp tới cổng!");
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Easter Egg Logic
+  const logoEaster = document.querySelector(".logo-btec-fixed");
+  const mascot = document.getElementById("mascot-easter-egg");
+  const closeMascot = document.getElementById("close-mascot");
+  let clickCount = 0;
+  let clickTimer = null;
+
+  if (logoEaster && mascot) {
+    logoEaster.addEventListener("click", () => {
+      clickCount++;
+
+      if (clickTimer) clearTimeout(clickTimer);
+
+      clickTimer = setTimeout(() => {
+        if (clickCount >= 3) {
+          mascot.classList.remove("mascot-easter-egg-hidden");
+        }
+        clickCount = 0;
+      }, 500); // 3 clicks within 0.5s
+    });
+  }
+
+  if (closeMascot) {
+    closeMascot.addEventListener("click", () => {
+      mascot.classList.add("mascot-easter-egg-hidden");
+    });
+  }
+});
