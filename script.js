@@ -200,6 +200,118 @@ window.addEventListener('DOMContentLoaded', () => {
         }, duration * 1000 + 500);
     }
 
-    
+    // Events filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const eventCards = document.querySelectorAll('.event-card');
+
+    if (filterButtons.length > 0 && eventCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Reset time for accurate date comparison
+
+                eventCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const dateStr = card.dataset.date; // Expects YYYY-MM-DD format
+                    const eventDate = new Date(dateStr);
+
+                    let show = false;
+
+                    if (filter === 'all') {
+                        show = true;
+                    } else if (filter === 'upcoming') {
+                        if (eventDate >= today) show = true;
+                    } else if (filter === 'past') {
+                        if (eventDate < today) show = true;
+                    } else { // Category filter
+                        if (category === filter) show = true;
+                    }
+
+                    if (show) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Alumni Slider
+    const alumniSlider = document.querySelector('.alumni-section');
+    if (alumniSlider) {
+        const track = alumniSlider.querySelector('.alumni-slider-track');
+        const prevBtn = alumniSlider.querySelector('#alumni-prev-btn');
+        const nextBtn = alumniSlider.querySelector('#alumni-next-btn');
+        let currentIndex = 0;
+        let autoSlideInterval;
+        const slideInterval = 4000; // 4 seconds
+
+        function updateSlider() {
+            const cards = track.querySelectorAll('.alumni-card');
+            if (cards.length === 0) return;
+            const cardWidth = cards[0].offsetWidth;
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+
+        function moveToNext() {
+            const cards = track.querySelectorAll('.alumni-card');
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateSlider();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(moveToNext, slideInterval);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Clone cards for infinite loop effect
+        const cards = Array.from(track.children);
+        cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            moveToNext();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const cards = track.querySelectorAll('.alumni-card');
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            updateSlider();
+        });
+
+        alumniSlider.addEventListener('mouseenter', stopAutoSlide);
+        alumniSlider.addEventListener('mouseleave', startAutoSlide);
+
+        // Reset transition when looping
+        track.addEventListener('transitionend', () => {
+            const cards = track.querySelectorAll('.alumni-card');
+            const originalCardCount = cards.length / 2;
+            if (currentIndex >= originalCardCount) {
+                track.style.transition = 'none';
+                currentIndex = currentIndex % originalCardCount;
+                updateSlider();
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease-in-out';
+                }, 50);
+            }
+        });
+        
+        window.addEventListener('resize', updateSlider);
+
+        startAutoSlide();
+        updateSlider();
+    }
+
 
 });
