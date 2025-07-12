@@ -2,39 +2,121 @@
 <html lang="vi">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="Cao đẳng quốc tế BTEC FPT - Chương trình đào tạo chuẩn Anh Quốc với bằng BTEC HND">
+  <meta name="keywords" content="BTEC, FPT, cao đẳng, đào tạo, Anh Quốc, lập trình, thiết kế, quản trị kinh doanh">
+  <meta name="author" content="BTEC FPT">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Cao đẳng quốc tế BTEC FPT">
+  <meta property="og:description" content="Chương trình đào tạo chuẩn Anh Quốc với bằng BTEC HND">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="img/Logo-Btec.png">
   <title>Landing Page - Cao đẳng quốc tế BTEC</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Top Navigation Bar & Track - New Structure */
+    .track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1100;
+      height: 80px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-nav-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .top-nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+      margin: 0 40px;
+      padding: 0;
+    }
+
+    .top-nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: color 0.2s, background-color 0.2s;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    }
+
+    .top-nav-links a:hover {
+      color: #fff;
+      background-color: #0056b3;
+    }
+
+    .duong-co {
+      position: absolute;
+      inset: 0;
+      background-image: url("img/ChatGPT_Image_22_33_29_8_thg_7__2025-removebg-preview.png");
+      background-repeat: repeat-x;
+      background-size: auto 80px;
+      background-position: bottom left;
+      z-index: 1;
+    }
+
+    .walker {
+      position: absolute;
+      bottom: 5px;
+      width: 40px;
+      transition: transform 0.1s linear;
+      z-index: 2;
+    }
+
+    .cai-cong {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 5px;
+      right: 20px;
+      transition: transform 0.1s linear;
+      z-index: 2;
+    }
+  </style>
 </head>
 
 <body>
+  <nav class="track">
+    <div class="container top-nav-content">
+      <ul class="top-nav-links">
+        <li><a href="#hero">Giới thiệu</a></li>
+        <li><a href="#pathway">Lộ trình</a></li>
+        <li><a href="#alumni">Gương mặt</a></li>
+        <li><a href="#events">Sự kiện</a></li>
+        <li><a href="#experience">Trải nghiệm</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </div>
+    <img src="img/scholar_transparent.png" alt="" class="walker" />
+    <img src="img/exam_gate_transparent.png" alt="" class="cai-cong" />
+    <div class="duong-co"></div>
+  </nav>
   <!-- Header -->
   <header class="header">
-    <nav class="track">
-      <div class="container top-nav-content">
-        <ul class="top-nav-links">
-          <li><a href="#hero">Giới thiệu</a></li>
-          <li><a href="#summer-activities">Hoạt động</a></li>
-          <li><a href="#objectives">Mục tiêu</a></li>
-          <li><a href="#vision-mission">Tầm nhìn & Sứ mệnh</a></li>
-          <li><a href="#btec-edexcel">Bằng cấp</a></li>
-          <li><a href="#contact">Liên hệ</a></li>
-        </ul>
-      </div>
-      <img src="img/scholar_transparent.png" alt="" class="walker" />
-      <img src="img/exam_gate_transparent.png" alt="" class="cai-cong" />
-      <div class="duong-co"></div>
-    </nav>
     <!-- Thêm vào trong .header-content -->
-    <button id="toggle-dark" aria-label="Chuyển dark mode" class="darkmode-btn">
-      🌙
-    </button>
-    <button id="toggle-leaves" aria-label="Bật/tắt lá rơi" class="leaves-btn">
-      🍂
-    </button>
+    <button id="toggle-dark" aria-label="Chuyển dark mode" class="darkmode-btn">🌙</button>
+    <button id="toggle-leaves" aria-label="Bật/tắt lá rơi" class="leaves-btn">🍂</button>
     <div class="container header-content">
-      <img src="img/Logo-Btec.png" alt="Logo BTEC" class="logo-btec-fixed" />
+      <img src="img/Logo-Btec.png" alt="Logo BTEC" class="logo-btec-fixed">
       <h1 class="slogan"><span id="typing-slogan"></span></h1>
       <a href="#hero" class="explore-btn">Khám phá ngay</a>
     </div>
@@ -46,145 +128,512 @@
       <div class="container hero-content scroll-animate">
         <div class="hero-text">
           <h2>Chương trình đào tạo BTEC HND</h2>
-          <p>
-            BTEC HND là chương trình đào tạo của Anh Quốc, tương đương cấp độ
-            cao đẳng trong hệ thống giáo dục Việt Nam. Với triết lý đào tạo
-            hiện đại, chương trình liên tục được cập nhật để đáp ứng nhu cầu
-            chất lượng nhân sự của các doanh nghiệp.
-          </p>
+          <p>BTEC HND là chương trình đào tạo của Anh Quốc, tương đương cấp độ cao đẳng trong hệ thống giáo dục Việt
+            Nam. Với triết lý đào tạo hiện đại, chương trình liên tục được cập nhật để đáp ứng nhu cầu chất lượng nhân
+            sự của các doanh nghiệp.</p>
         </div>
-        <img src="img/brand-01.png" alt="Mùa hè BTEC" class="hero-img" />
+        <!-- START: Image Layout Update -->
+        <div class="image-cluster hero-images">
+          <img src="img/quốc tế.jpg" alt="Bằng Anh Quốc" class="hero-img-top">
+          <img src="img/brand-01.png" alt="Sinh viên BTEC" class="hero-img-bottom">
+        </div>
+        <!-- END: Image Layout Update -->
       </div>
     </div>
   </section>
 
   <!-- Section: Hoạt động liên kết -->
-  <section class="section summer" id="summer-activities">
+  <section class="section summer">
     <div class="container section-content">
       <div class="container section-content scroll-animate">
-        <img src="img/brand-02.png" alt="Mùa hè" class="section-img" />
+        <img src="img/brand-02.png" alt="Mùa hè" class="section-img">
         <div class="section-text">
           <h3>Hoạt động liên kết đào tạo</h3>
-          <p>
-            BTEC liên kết với Trường Cao đẳng FPT Polytechnic và Pearson
-            Education South Asia để cấp bằng nghề Anh Quốc cho các ngành:
-            Thiết kế đồ hoạ, Quản trị kinh doanh, và Lập trình máy tính.
-          </p>
+          <p>BTEC liên kết với Trường Cao đẳng FPT Polytechnic và Pearson Education South Asia để cấp bằng nghề Anh Quốc
+            cho các ngành: Thiết kế đồ hoạ, Quản trị kinh doanh, và Lập trình máy tính, Công nghệ bán dẫn.</p>
+        </div>
+        <div class="majors-container">
+          <div class="major-card" style="background-image: url('img/ltr.jpg');">
+            <div class="major-card-overlay">
+              <h4>Lập trình máy tính</h4>
+              <ul>
+                <li><span class="major-icon">📋</span> Kỹ thuật phần mềm</li>
+              </ul>
+            </div>
+          </div>
+          <div class="major-card" style="background-image: url('img/dh.jpg');">
+            <div class="major-card-overlay">
+              <h4>Thiết kế đồ hoạ</h4>
+              <ul>
+                <li><span class="major-icon">📋</span> Thiết kế đồ hoạ</li>
+              </ul>
+            </div>
+          </div>
+          <div class="major-card" style="background-image: url('img/qtr.jpg');">
+            <div class="major-card-overlay">
+              <h4>Quản trị kinh doanh</h4>
+              <ul>
+                <li><span class="major-icon">📋</span> Marketing</li>
+                <li><span class="major-icon">📋</span> Quản trị kinh doanh</li>
+                <li><span class="major-icon">📋</span> Logistic Mua sắm và quản lý cung ứng</li>
+              </ul>
+            </div>
+          </div>
+          <div class="major-card" style="background-image: url('img/bd.jpg');">
+            <div class="major-card-overlay">
+              <h4>Kỹ thuật - Công nghệ bán dẫn</h4>
+              <ul>
+                <li><span class="major-icon">📋</span> Công nghệ bán dẫn</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Section: Mục tiêu -->
-  <section class="section student" id="objectives">
+  <section class="section student">
     <div class="container section-content reverse">
       <div class="container section-content scroll-animate">
         <div class="section-text">
           <h3>Mục tiêu</h3>
-          <p>
-            Triển khai chương trình nghề nghiệp chuẩn Anh Quốc, là cầu nối chi
-            phí thấp đến các đại học hàng đầu thế giới. Đào tạo nguồn nhân lực
-            chất lượng cao cho giai đoạn hội nhập toàn cầu.
-          </p>
+          <p>Triển khai chương trình nghề nghiệp chuẩn Anh Quốc, là cầu nối chi phí thấp đến các đại học hàng đầu thế
+            giới. Đào tạo nguồn nhân lực chất lượng cao cho giai đoạn hội nhập toàn cầu.</p>
         </div>
-        <img src="img/brand-03.png" alt="Sĩ tử" class="section-img" />
+        <!-- START: Image Layout Update -->
+        <div class="image-cluster student-images">
+          <img src="img/brand-03.png" alt="Chương trình học 2 năm" class="student-img-top">
+          <div class="student-img-bottom-row">
+            <img src="img/section student.jpg" alt="Thực tế doanh nghiệp" class="student-img-bottom">
+            <img src="img/viec lam.png" alt="Đặc sản BTEC FPT" class="student-img-bottom">
+          </div>
+        </div>
+        <!-- END: Image Layout Update -->
       </div>
     </div>
   </section>
 
   <!-- Section: Tầm nhìn và sứ mệnh -->
-  <section class="section tradition-bg" id="vision-mission">
+  <section class="section tradition-bg">
     <div class="container section-content">
       <div class="container section-content scroll-animate">
-        <img src="img/brand-05.png" alt="Cổ truyền" class="section-img" />
+        <img src="img/brand-05.png" alt="Cổ truyền" class="section-img">
         <div class="section-text">
           <h3>Tầm nhìn và sứ mệnh</h3>
-          <p>
-            BTEC FPT tối đa hóa kỹ năng ứng dụng kiến thức, đưa công nghệ và
-            thành tựu khoa học, đặc biệt là AI, vào giảng dạy. Chúng tôi là
-            cầu nối cho sinh viên Việt Nam tiếp cận với nền giáo dục quốc tế
-            tiến bộ.
+          <p>BTEC FPT tối đa hóa kỹ năng ứng dụng kiến thức, đưa công nghệ và thành tựu khoa học, đặc biệt là AI, vào
+            giảng dạy. Chúng tôi là cầu nối cho sinh viên Việt Nam tiếp cận với nền giáo dục quốc tế tiến bộ.</p>
+        </div>
+        <div class="values-section">
+          <p class="values-intro">Chúng tôi mã hoá lại những giá trị cốt lõi truyền thống để phù hợp với thời đại số.
           </p>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon">📖</div>
+              <h5>Tinh Thần Hiếu Học 4.0</h5>
+              <p>Biến thành "tinh thần tự cày cuốc", chủ động nghiên cứu, chinh phục các dự án khó.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">👥</div>
+              <h5>Tôn Sư = Mentors</h5>
+              <p>Giảng viên không chỉ dạy, mà còn là những người "mentor" (hướng dẫn) đồng hành, chia sẻ kinh nghiệm
+                thực chiến.</p>
+            </div>
+            <div class="value-card highlighted">
+              <div class="value-icon">✊</div>
+              <h5>Ý Chí Sĩ Tử</h5>
+              <p>Tinh thần vượt khó, "vượt vũ môn" được tôi luyện qua từng deadline, từng buổi bảo vệ đồ án đầy áp lực.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Section: Edexcel & BTEC -->
-  <section class="section btec" id="btec-edexcel">
+  <section class="section btec">
     <div class="container section-content reverse">
       <div class="container section-content scroll-animate">
         <div class="section-text">
           <h3><span class="highlight">Edexcel và Bằng BTEC</span></h3>
-          <p>
-            Edexcel là cơ quan cấp văn bằng lớn nhất Anh Quốc. Bằng BTEC là
-            văn bằng quốc tế chất lượng cao, với BTEC HND Level 5 tương đương
-            năm thứ hai đại học tại Anh, mở ra cơ hội học lên cao hơn tại các
-            trường đại học uy tín
-          </p>
+          <p>Edexcel là cơ quan cấp văn bằng lớn nhất Anh Quốc. Bằng BTEC là văn bằng quốc tế chất lượng cao, với BTEC
+            HND Level 5 tương đương năm thứ hai đại học tại Anh, mở ra cơ hội học lên cao hơn tại các trường đại học uy
+            tín</p>
           <ul class="btec-info">
             <li>Phương pháp giáo dục chuẩn quốc tế</li>
             <li>Chú trọng ngoại ngữ và kỹ năng nghề nghiệp</li>
             <li>Ứng dụng AI và công nghệ vào giảng dạy</li>
           </ul>
         </div>
-        <img src="img/edexcel.png" alt="Thông tin trường BTEC" class="section-img" />
+        <!-- START: Image Layout Update -->
+        <div class="image-cluster btec-images">
+          <img src="img/Melbourne.jpg" alt="Trường đại học Melbourne" class="btec-img-top">
+          <img src="img/tốt nghiệp.jpg" alt="Sinh viên tốt nghiệp" class="btec-img-bottom">
+        </div>
+        <!-- END: Image Layout Update -->
       </div>
     </div>
   </section>
 
-  <!-- Section: Liên hệ -->
-  <section class="section contact" id="contact">
-    <div class="container contact-content">
-      <div class="container section-content scroll-animate">
-        <h3>Liên hệ với chúng tôi</h3>
-        <form class="contact-form">
-          <input type="text" placeholder="Họ và tên" required />
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Nội dung liên hệ" required></textarea>
-          <!-- Thay đổi nút gửi liên hệ trong form -->
-          <button type="submit">
-            <span class="btn-text">Gửi liên hệ</span>
-            <span class="btn-loading" style="display: none">
-              <span class="runner"></span>
-            </span>
-          </button>
-        </form>
-        <div class="contact-info">
-          <p>
-            <strong>Địa chỉ:</strong> Cao đẳng quốc tế BTEC, FPT Education
-          </p>
-          <p><strong>Email:</strong> info@btec.edu.vn</p>
-          <p><strong>Điện thoại:</strong> 0123 456 789</p>
+  <!-- Section: Success Pathway -->
+  <section class="section pathway-section" id="pathway">
+    <div class="container">
+      <div class="pathway-header scroll-animate">
+        <h2>Lộ trình Thành công tại BTEC FPT</h2>
+        <p>Hành trình 20 tháng đến sự nghiệp mơ ước của bạn</p>
+      </div>
+      <div class="pathway-wrapper">
+        <div class="pathway-line"></div>
+        <!-- Step 1 -->
+        <div class="pathway-step left scroll-animate">
+          <div class="pathway-dot"></div>
+          <div class="pathway-content">
+            <h4>Nhập học: Khởi đầu vững chắc <span class="pathway-icon">🚀</span></h4>
+            <p>Bắt đầu hành trình với chương trình chuẩn quốc tế và môi trường học tập năng động, sáng tạo.</p>
+            <div class="pathway-tags">
+              <span>Bằng cấp Anh Quốc</span>
+              <span>Môi trường năng động</span>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="pathway-step right scroll-animate">
+          <div class="pathway-dot"></div>
+          <div class="pathway-content">
+            <h4>Năm 1: Xây dựng nền tảng <span class="pathway-icon">📚</span></h4>
+            <p>Tập trung vào kiến thức chuyên ngành cốt lõi và nâng cao trình độ Tiếng Anh theo chuẩn quốc tế.</p>
+            <div class="pathway-tags">
+              <span>Kiến thức chuyên sâu</span>
+              <span>Tiếng Anh toàn diện</span>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="pathway-step left scroll-animate">
+          <div class="pathway-dot"></div>
+          <div class="pathway-content">
+            <h4>Năm 2: Dự án thực tế & Thực tập <span class="pathway-icon">💼</span></h4>
+            <p>Áp dụng kiến thức vào các dự án thực tế (Project-based learning) và kỳ thực tập tại doanh nghiệp (OJT).
+            </p>
+            <div class="pathway-tags">
+              <span>Học qua dự án</span>
+              <span>Kết nối doanh nghiệp</span>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="pathway-step right scroll-animate">
+          <div class="pathway-dot"></div>
+          <div class="pathway-content">
+            <h4>Tốt nghiệp: Tấm bằng & Việc làm <span class="pathway-icon">🎓</span></h4>
+            <p>Nhận bằng BTEC HND danh giá, được công nhận toàn cầu và sẵn sàng gia nhập thị trường lao động.</p>
+            <div class="pathway-tags">
+              <span>100% có việc làm</span>
+              <span>Lương khởi điểm 8-15tr</span>
+            </div>
+          </div>
+        </div>
+        <!-- Step 5 -->
+        <div class="pathway-step left scroll-animate">
+          <div class="pathway-dot"></div>
+          <div class="pathway-content">
+            <h4>Tương lai: Sự nghiệp & Du học <span class="pathway-icon">🌍</span></h4>
+            <p>Cơ hội du học chuyển tiếp lên các đại học hàng đầu thế giới hoặc phát triển sự nghiệp bền vững.</p>
+            <div class="pathway-tags">
+              <span>Du học chuyển tiếp</span>
+              <span>Sự nghiệp toàn cầu</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Section: Alumni -->
+  <section class="section alumni-section" id="alumni">
+    <div class="alumni-bg-pattern"></div>
+    <div class="container scroll-animate">
+      <div class="alumni-header">
+        <h2>Gương mặt BTEC</h2>
+        <a href="#" class="view-all-link">Xem tất cả →</a>
+      </div>
+      <div class="alumni-slider-wrapper">
+        <div class="alumni-slider-track">
+          <!-- Alumni Card 1 -->
+          <div class="alumni-card">
+            <img src="img/anh truong.jpg" alt="Trúc Mai">
+            <div class="alumni-overlay">
+              <h5>Truong vu</h5>
+              <p>Nam sinh Xuất sắc</p>
+            </div>
+          </div>
+          <!-- Alumni Card 2 -->
+          <div class="alumni-card">
+            <img src="img/le-nghi-1-min.jpg.webp" alt="Lê Nghi">
+            <div class="alumni-overlay">
+              <h5>LÊ NGHI</h5>
+              <p>Nữ sinh ưu tú của BTEC FPT Đà Nẵng</p>
+            </div>
+          </div>
+          <!-- Alumni Card 3 -->
+          <div class="alumni-card">
+            <img src="img/my-linh.jpg.webp" alt="Mỹ Linh">
+            <div class="alumni-overlay">
+              <h5>MỸ LINH</h5>
+              <p>Cô sinh viên đam mê những dự án vì cộng đồng</p>
+            </div>
+          </div>
+          <!-- Alumni Card 4 -->
+          <div class="alumni-card">
+            <img src="img/văn d.jpg" alt="Văn Dương">
+            <div class="alumni-overlay">
+              <h5>VĂN DƯƠNG</h5>
+              <p>Hiệp sĩ ngành TKĐH đạt thành tích xuất sắc</p>
+            </div>
+          </div>
+          <!-- Alumni Card 5 -->
+          <div class="alumni-card">
+            <img src="img/văn .jpg" alt="Văn Quyết">
+            <div class="alumni-overlay">
+              <h5>VĂN QUYẾT</h5>
+              <p>Sinh viên xuất sắc ngành Lập trình</p>
+            </div>
+          </div>
+          <!-- Alumni Card 6 -->
+          <div class="alumni-card">
+            <img src="img/huyen.jpg" alt="Văn Dương">
+            <div class="alumni-overlay">
+              <h5>Huyen Trang</h5>
+              <p>Nữ Sinh Viên Xuất Sắc</p>
+            </div>
+          </div>
+
+          <!-- Add more cards if needed -->
+        </div>
+      </div>
+      <div class="alumni-slider-nav">
+        <button id="alumni-prev-btn" aria-label="Previous">←</button>
+        <button id="alumni-next-btn" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Events -->
+  <section class="section events-section" id="events">
+    <div class="container">
+      <h3 class="events-title">Sự kiện nổi bật</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tất Cả</button>
+        <button class="filter-btn" data-filter="upcoming">Sắp diễn ra</button>
+        <button class="filter-btn" data-filter="past">Đã qua</button>
+
+      </div>
+      <div class="events-grid scroll-animate">
+        <!-- Event Card 1 -->
+        <div class="event-card" data-category="music" data-date="2024-07-25">
+          <div class="event-image-wrapper">
+            <img src="img/workshop2.jpg" alt="Đại Nhạc Hội Mùa Hè">
+            <span class="event-tag">Company Tour & Workshop</span>
+            <span class="event-date-tag">25/6/2025</span>
+          </div>
+          <div class="event-content">
+            <h4>Game On</h4>
+            <div class="event-meta">
+              <span>📍 Hội trường Cao đẳng Anh Quốc BTEC FPT</span>
+              <span>🕒 13:00 - 17:00</span>
+            </div>
+            <p>Sinh viên đã được tiếp cận trực tiếp với mô hình vận hành của một công ty công nghệ thực thụ,
+              với các thiết bị hiện đại như kính VR, mô phỏng Sim Racing</p>
+            <a href="#" class="event-register-btn">Đăng ký tham gia</a>
+          </div>
+        </div>
+        <!-- Event Card 2 -->
+        <div class="event-card" data-category="outdoor" data-date="2024-08-10">
+          <div class="event-image-wrapper">
+            <img src="img/workshop1.jpg" alt="Cắm Trại Đêm Hè">
+            <span class="event-tag">WORKSHOP</span>
+            <span class="event-date-tag">26/06/2025</span>
+          </div>
+          <div class="event-content">
+            <h4>TMCP Hàng Hải Việt Nam (MSB)</h4>
+            <div class="event-meta">
+              <span>📍 Hội trường Cao đẳng Anh Quốc BTEC FPT</span>
+              <span>🕒 8:00 - 11:00</span>
+            </div>
+            <p>Sự kiện đã mở ra những góc nhìn hoàn toàn mới về hành trình trở thành
+              Management Trainee giữa thời đại chuyển đổi số..</p>
+            <a href="#" class="event-register-btn">Đăng ký tham gia</a>
+          </div>
+        </div>
+        <!-- Event Card 3 -->
+        <div class="event-card" data-category="coding" data-date="2025-07-18">
+          <div class="event-image-wrapper">
+            <img src="img/trangcode.jpg" alt="Cuộc Thi Hackathon">
+            <span class="event-tag">Lập Trình</span>
+            <span class="event-date-tag">18/07/2025</span>
+          </div>
+          <div class="event-content">
+            <h4>Trạng code 2025</h4>
+            <div class="event-meta">
+              <span>📍 Hội trường Cao đẳng Anh Quốc BTEC FPT</span>
+              <span>🕒 8:00 - 17:00</span>
+            </div>
+            <p>Cuộc thi lập trình nhanh dành cho sinh viên, giải quyết các bài toán thực tế từ doanh nghiệp.</p>
+            <a href="#" class="event-register-btn">Đăng ký tham gia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Student Experience (Bento Grid) -->
+  <section class="section experience-section" id="experience">
+    <div class="container scroll-animate">
+      <div class="experience-header">
+        <h2>Trải nghiệm sinh viên</h2>
+        <p>BTEC FPT</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-item item-large" style="background-image: url('img/học.jpg');">
+          <div class="bento-overlay"></div>
+          <div class="bento-content">
+            <span class="bento-icon">🎓</span>
+            <h4>Học tập & Sáng tạo</h4>
+            <p>Môi trường học tập năng động, khuyến khích tư duy phản biện và làm việc nhóm hiệu quả.</p>
+          </div>
+        </div>
+        <div class="bento-item" style="background-image: url('img/workshop.jpg');">
+          <div class="bento-overlay"></div>
+          <div class="bento-content">
+            <span class="bento-icon">🎤</span>
+            <h4>Gặp gỡ chuyên gia</h4>
+            <p>Các buổi workshop với diễn giả hàng đầu trong ngành.</p>
+          </div>
+        </div>
+        <div class="bento-item" style="background-image: url('img/kết\ nối.jpg');">
+          <div class="bento-overlay"></div>
+          <div class="bento-content">
+            <span class="bento-icon">🤝</span>
+            <h4>Kết nối doanh nghiệp</h4>
+            <p>Cơ hội thực tập và làm việc tại các công ty lớn.</p>
+          </div>
+        </div>
+        <div class="bento-item" style="background-image: url('img/mùa\ he.jpg');">
+          <div class="bento-overlay"></div>
+          <div class="bento-content">
+            <span class="bento-icon">🎉</span>
+            <h4>Sự kiện sôi động</h4>
+            <p>Hòa mình vào các lễ hội, cuộc thi và hoạt động ngoại khóa.</p>
+          </div>
+        </div>
+        <div class="bento-item" style="background-image: url('img/lễ\ hội.jpg');">
+          <div class="bento-overlay"></div>
+          <div class="bento-content">
+            <span class="bento-icon">🌍</span>
+            <h4>Cộng đồng quốc tế</h4>
+            <p>Giao lưu và học hỏi từ bạn bè khắp nơi trên thế giới.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Liên hệ (Creative) -->
+  <section class="section contact-section-v2" id="contact">
+    <div class="contact-box scroll-animate">
+      <div class="contact-form-wrapper">
+        <h3>Kết nối với BTEC FPT</h3>
+        <p class="contact-subtitle">Để lại lời nhắn và chúng tôi sẽ liên hệ lại ngay!</p>
+        <form class="contact-form">
+          <input type="text" placeholder="Họ và tên của bạn" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Bạn cần BTEC tư vấn điều gì?" required rows="5"></textarea>
+          <button type="submit">
+            <span class="btn-text">Gửi ngay</span>
+            <span class="btn-loading" style="display:none;">
+              <span class="runner"></span>
+            </span>
+          </button>
+        </form>
+      </div>
+      <div class="contact-info-wrapper">
+        <h4>Thông tin trực tiếp</h4>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Địa chỉ:</strong>
+              <a href="https://maps.google.com/?q=Cao+đẳng+quốc+tế+BTEC" target="_blank" rel="noopener noreferrer">Cao
+                đẳng quốc tế BTEC, FPT Education</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon">✉️</span>
+            <div>
+              <strong>Email:</strong>
+              <a href="mailto:info@btec.edu.vn">info@btec.edu.vn</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon">📞</span>
+            <div>
+              <strong>Điện thoại:</strong>
+              <a href="tel:0123456789">0123 456 789</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Footer -->
   <footer class="footer">
-    <img src="img/information-school.png" alt="Thông tin liên hệ" class="footer-info-img" />
+    <img src="img/information-school.png" alt="Thông tin liên hệ" class="footer-info-img">
   </footer>
 
   <!-- Easter Egg -->
   <div id="mascot-easter-egg" class="mascot-easter-egg-hidden">
     <div class="mascot-box">
-      <img src="img/Logo-Btec.png" alt="BTEC-FPT" class="mascot-img" />
+      <img src="img/Logo-Btec.png" alt="BTEC-FPT" class="mascot-img">
       <div class="mascot-speech">
-        “Bạn đã khám phá ra bí mật rồi!<br />
+        “Bạn đã khám phá ra bí mật rồi!<br>
         BTEC luôn dành điều đặc biệt cho người dũng cảm.”
       </div>
-      <button id="toggle-music" class="music-btn" aria-label="Bật/tắt nhạc">
-        🎵
-      </button>
-      <button id="close-mascot" class="close-mascot" aria-label="Đóng">
-        &times;
-      </button>
+      <button id="toggle-music" class="music-btn" aria-label="Bật/tắt nhạc">🎵</button>
+      <button id="close-mascot" class="close-mascot" aria-label="Đóng">×</button>
     </div>
   </div>
   <audio id="egg-music" src="/music/the-moment-to-victory-256946.mp3" loop></audio>
 
   <script src="script.js"></script>
+  <script>
+    // thanh di chuyen
+    const walker = document.querySelector(".walker");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+      const trackWidth = document.querySelector(".track").offsetWidth;
+
+      // Di chuyển nhân vật
+      if (walker) {
+        walker.style.transform = `translateX(${scrollPercent * trackWidth}px)`;
+      }
+
+      // Phân vùng: 4 phần = 25% mỗi phần
+      if (scrollPercent < 0.25) {
+        console.log("Phần 1: bắt đầu");
+      } else if (scrollPercent < 0.5) {
+        console.log("Phần 2: đi được 1/4");
+      } else if (scrollPercent < 0.75) {
+        console.log("Phần 3: gần đến nơi");
+      } else {
+        console.log("Phần 4: sắp tới cổng!");
+      }
+    });
+  </script>
 </body>
 
 </html>
