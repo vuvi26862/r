@@ -149,14 +149,7 @@ img {
 
 .header-content {
     position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     width: 100%;
-    text-align: center;
 }
 
 .header-bg {
@@ -260,6 +253,8 @@ img {
     width: auto;
     object-fit: contain;
     background: none;
+    filter: brightness(0.8) contrast(1.2) saturate(1.3);
+    transform: translateY(8px);
 }
 
 @media (max-width: 600px) {
@@ -267,23 +262,33 @@ img {
     .logo-fpt,
     .logo-pearson {
         height: 28px;
+        transform: translateY(6px);
+        filter: brightness(0.7) contrast(1.3) saturate(1.4);
     }
 }
 
 .logo-btec-fixed {
     position: absolute;
     top: 32px;
-    right: -50px;
+    right: 32px;
     height: 70px;
     width: auto;
-    z-index: 10;
+    z-index: 20;
 }
 
 @media (max-width: 600px) {
+    .header-content {
+        padding-top: 90px;
+    }
+
     .logo-btec-fixed {
-        top: 12px;
-        right: 0;
+        margin-top: 24px;
         height: 40px;
+    }
+
+    .darkmode-btn,
+    .leaves-btn {
+        margin-top: 18px;
     }
 }
 
@@ -547,9 +552,10 @@ img {
 /* DarkMode */
 .darkmode-btn {
     position: absolute;
-    top: 24px;
-    left: 24px;
-    z-index: 20;
+    top: 32px;
+    left: 32px;
+    z-index: 0;
+    margin-right: 8px;
     background: #fff;
     color: #222;
     border: none;
@@ -926,9 +932,9 @@ body.special-theme .contact-form button:hover {
 
 .leaves-btn {
     position: absolute;
-    top: 24px;
-    left: 76px;
-    z-index: 20;
+    top: 32px;
+    left: 80px;
+    z-index: 0;
     background: #fff;
     color: #b45309;
     border: none;

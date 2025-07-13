@@ -64,6 +64,12 @@
       background-color: #0056b3;
     }
 
+    .top-nav-links a.active {
+      color: #fbbf24;
+      background-color: #0056b3;
+      box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+    }
+
     .duong-co {
       position: absolute;
       inset: 0;
@@ -281,7 +287,7 @@
     <div class="container">
       <div class="pathway-header scroll-animate">
         <h2>Lộ trình Thành công tại BTEC FPT</h2>
-        <p>Hành trình 20 tháng đến sự nghiệp mơ ước của bạn</p>
+        <p>Hành trình 28 tháng đến sự nghiệp mơ ước của bạn</p>
       </div>
       <div class="pathway-wrapper">
         <div class="pathway-line"></div>
@@ -609,30 +615,297 @@
 
   <script src="script.js"></script>
   <script>
-    // thanh di chuyen
+    // Walker movement theo navigation menu thực tế với smooth movement cho phần giới thiệu
     const walker = document.querySelector(".walker");
-    window.addEventListener("scroll", () => {
+    const track = document.querySelector(".track");
+
+    // Định nghĩa các navigation sections
+    const navigationSections = [
+      { id: 'intro', name: 'Giới thiệu', selector: '.header, .hero, .summer, .student, .tradition-bg, .btec' },
+      { id: 'pathway', name: 'Lộ trình', selector: '#pathway' },
+      { id: 'alumni', name: 'Gương mặt', selector: '#alumni' },
+      { id: 'events', name: 'Sự kiện', selector: '#events' },
+      { id: 'experience', name: 'Trải nghiệm', selector: '#experience' },
+      { id: 'contact', name: 'Liên hệ', selector: '#contact' }
+    ];
+
+    // Định nghĩa các intro sections để tính progress chi tiết
+    const introSections = [
+      { selector: '.header', name: 'Header' },
+      { selector: '.hero', name: 'Hero' },
+      { selector: '.summer', name: 'Hoạt động liên kết' },
+      { selector: '.student', name: 'Mục tiêu' },
+      { selector: '.tradition-bg', name: 'Tầm nhìn & Sứ mệnh' },
+      { selector: '.btec', name: 'Edexcel & BTEC' }
+    ];
+
+    // Smooth scroll function
+    function smoothScrollTo(targetId) {
+      const target = document.querySelector(targetId);
+      if (target) {
+        const headerHeight = document.querySelector('.track').offsetHeight;
+
+        // Scroll đến đầu section với offset cho header
+        const targetPosition = target.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        });
+
+        // Update active navigation state
+        updateActiveNavigation(targetId);
+
+        // Force update walker position after scroll
+        setTimeout(() => {
+          updateWalkerPosition();
+        }, 200);
+      }
+    }
+
+    // Update active navigation state
+    function updateActiveNavigation(targetId) {
+      const navLinks = document.querySelectorAll('.top-nav-links a');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === targetId) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Auto update active navigation based on current section
+    function updateActiveNavigationOnScroll() {
+      const windowHeight = window.innerHeight;
+      const headerHeight = document.querySelector('.track').offsetHeight;
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = scrollTop / docHeight;
-      const trackWidth = document.querySelector(".track").offsetWidth;
 
-      // Di chuyển nhân vật
-      if (walker) {
-        walker.style.transform = `translateX(${scrollPercent * trackWidth}px)`;
+      // Tìm section đang được xem nhiều nhất
+      let activeSectionId = '#hero'; // Default
+      let maxVisibility = 0;
+
+      // Check tất cả sections có ID
+      const sections = document.querySelectorAll('section[id], .header');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+
+        // Tính phần trăm section đang hiển thị trong viewport
+        const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+        const visibility = Math.max(0, visibleHeight / sectionHeight);
+
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          activeSectionId = '#' + section.id;
+        }
+      });
+
+      // Special handling cho phần giới thiệu (bao gồm nhiều sections)
+      const introSections = document.querySelectorAll('.header, .hero, .summer, .student, .tradition-bg, .btec');
+      let introVisibility = 0;
+
+      introSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+        const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+        const visibility = Math.max(0, visibleHeight / sectionHeight);
+        introVisibility = Math.max(introVisibility, visibility);
+      });
+
+      // Nếu phần giới thiệu có visibility cao nhất, set active cho "Giới thiệu"
+      if (introVisibility > maxVisibility) {
+        activeSectionId = '#hero';
       }
 
-      // Phân vùng: 4 phần = 25% mỗi phần
-      if (scrollPercent < 0.25) {
-        console.log("Phần 1: bắt đầu");
-      } else if (scrollPercent < 0.5) {
-        console.log("Phần 2: đi được 1/4");
-      } else if (scrollPercent < 0.75) {
-        console.log("Phần 3: gần đến nơi");
+      // Update active navigation
+      const navLinks = document.querySelectorAll('.top-nav-links a');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === activeSectionId) {
+          link.classList.add('active');
+        }
+      });
+
+      console.log('Active section:', activeSectionId, 'Visibility:', Math.round(maxVisibility * 100) + '%');
+    }
+
+    // Handle navigation clicks với event delegation
+    function handleNavigationClick(e) {
+      e.preventDefault();
+      e.stopPropagation(); // Ngăn event bubbling
+
+      const targetId = this.getAttribute('href');
+      console.log('Navigation clicked:', targetId);
+
+      smoothScrollTo(targetId);
+    }
+
+    // Initialize navigation với event delegation
+    function initializeNavigation() {
+      const navLinks = document.querySelectorAll('.top-nav-links a');
+
+      // Remove existing listeners để tránh duplicate
+      navLinks.forEach(link => {
+        link.removeEventListener('click', handleNavigationClick);
+        link.addEventListener('click', handleNavigationClick);
+      });
+
+      console.log('Navigation initialized with', navLinks.length, 'links');
+    }
+
+    // Initialize ngay khi DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeNavigation);
+    } else {
+      initializeNavigation();
+    }
+
+    // Fallback: Initialize sau khi script.js load
+    setTimeout(initializeNavigation, 100);
+
+    function updateWalkerPosition() {
+      if (!walker || !track) return;
+
+      const trackWidth = track.offsetWidth;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.scrollY;
+
+      // Tìm navigation section đang được xem nhiều nhất
+      let activeNavIndex = 0;
+      let maxVisibility = 0;
+
+      navigationSections.forEach((navSection, index) => {
+        const elements = document.querySelectorAll(navSection.selector);
+        let sectionVisibility = 0;
+
+        elements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const elementHeight = element.offsetHeight;
+
+          // Tính phần trăm element đang hiển thị trong viewport
+          const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+          const visibility = Math.max(0, visibleHeight / elementHeight);
+
+          sectionVisibility = Math.max(sectionVisibility, visibility);
+        });
+
+        if (sectionVisibility > maxVisibility) {
+          maxVisibility = sectionVisibility;
+          activeNavIndex = index;
+        }
+      });
+
+      // Tính vị trí walker
+      const navWidth = trackWidth / navigationSections.length;
+      let targetPosition = activeNavIndex * navWidth;
+
+      // Nếu đang ở phần giới thiệu, tính progress chi tiết
+      if (activeNavIndex === 0) {
+        // Tìm intro section đang được xem nhiều nhất
+        let activeIntroIndex = 0;
+        let maxIntroVisibility = 0;
+
+        introSections.forEach((introSection, index) => {
+          const element = document.querySelector(introSection.selector);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            const elementHeight = element.offsetHeight;
+            const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+            const visibility = Math.max(0, visibleHeight / elementHeight);
+
+            if (visibility > maxIntroVisibility) {
+              maxIntroVisibility = visibility;
+              activeIntroIndex = index;
+            }
+          }
+        });
+
+        // Tính progress trong phần giới thiệu (0-1)
+        const introProgress = activeIntroIndex / (introSections.length - 1);
+
+        // Thêm offset dựa trên scroll trong intro section hiện tại
+        const activeIntroElement = document.querySelector(introSections[activeIntroIndex].selector);
+        let sectionScrollProgress = 0;
+
+        if (activeIntroElement) {
+          const rect = activeIntroElement.getBoundingClientRect();
+          sectionScrollProgress = Math.max(0, Math.min(1,
+            (windowHeight - rect.top) / (windowHeight + activeIntroElement.offsetHeight)
+          ));
+        }
+
+        // Tính vị trí chi tiết trong phần giới thiệu
+        const introSectionWidth = navWidth / introSections.length;
+        const introOffset = (activeIntroIndex + sectionScrollProgress) * introSectionWidth;
+        targetPosition = introOffset;
+
+        // Smooth transition cho phần giới thiệu
+        walker.style.transition = 'transform 0.5s ease-out';
+
+        console.log(`Walker đang ở: ${introSections[activeIntroIndex].name} (${Math.round(maxIntroVisibility * 100)}% visible) - Progress: ${Math.round(introProgress * 100)}%`);
       } else {
-        console.log("Phần 4: sắp tới cổng!");
+        // Các navigation khác - tính progress bình thường
+        const activeElements = document.querySelectorAll(navigationSections[activeNavIndex].selector);
+        let sectionScrollProgress = 0;
+
+        if (activeElements.length > 0) {
+          let maxElementVisibility = 0;
+          let mostVisibleElement = null;
+
+          activeElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const elementHeight = element.offsetHeight;
+            const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+            const visibility = Math.max(0, visibleHeight / elementHeight);
+
+            if (visibility > maxElementVisibility) {
+              maxElementVisibility = visibility;
+              mostVisibleElement = element;
+            }
+          });
+
+          if (mostVisibleElement) {
+            const rect = mostVisibleElement.getBoundingClientRect();
+            sectionScrollProgress = Math.max(0, Math.min(1,
+              (windowHeight - rect.top) / (windowHeight + mostVisibleElement.offsetHeight)
+            ));
+          }
+        }
+
+        targetPosition += (sectionScrollProgress * navWidth);
+
+        // Faster transition cho các navigation khác
+        walker.style.transition = 'transform 0.3s ease-out';
+
+        const currentNav = navigationSections[activeNavIndex];
+        console.log(`Walker đang ở: ${currentNav.name} (${Math.round(maxVisibility * 100)}% visible)`);
       }
-    });
+
+      // Áp dụng vị trí với boundary checking
+      walker.style.transform = `translateX(${Math.max(0, Math.min(trackWidth - 40, targetPosition))}px)`;
+    }
+
+    // Throttle function để tối ưu performance
+    function throttle(func, limit) {
+      let inThrottle;
+      return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    }
+
+    // Event listeners
+    window.addEventListener("scroll", throttle(updateWalkerPosition, 16)); // ~60fps
+    window.addEventListener("resize", throttle(updateWalkerPosition, 100));
+    window.addEventListener("scroll", throttle(updateActiveNavigationOnScroll, 100)); // Update active nav on scroll
+
+    // Khởi tạo vị trí ban đầu
+    updateWalkerPosition();
   </script>
 </body>
 
