@@ -559,6 +559,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }, 500);
   });
+
   const gate = document.querySelector(".cai-cong");
   let countclick = 0;
 
@@ -568,7 +569,7 @@ window.addEventListener("DOMContentLoaded", () => {
     gate.style.transform = "scale(1.1)";
     setTimeout(() => (gate.style.transform = "scale(1)"), 100);
 
-    if (countclick >= 8) {
+    if (countclick >= 2) {
       countclick = 0;
 
       window.location.href =
